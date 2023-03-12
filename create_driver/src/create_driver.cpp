@@ -41,13 +41,13 @@ CreateDriver::CreateDriver()
     last_cmd_vel_time_(0),
     is_running_slowly_(false)
 {
-  dev_ = declare_parameter<std::string>("dev", "/dev/ttyUSB0");
+  dev_ = declare_parameter<std::string>("dev", "/dev/ttyAML1");
   base_frame_ = declare_parameter<std::string>("base_frame", "base_footprint");
   odom_frame_ = declare_parameter<std::string>("odom_frame", "odom");
   latch_duration_ = declare_parameter<double>("latch_cmd_duration", 0.2);
   loop_hz_ = declare_parameter<double>("loop_hz", 10.0);
   publish_tf_ = declare_parameter<bool>("publish_tf", true);
-  oi_mode_workaround_ = declare_parameter<bool>("oi_mode_workaround", false);
+  oi_mode_workaround_ = declare_parameter<bool>("oi_mode_workaround", true);
 
   auto robot_model_name = declare_parameter<std::string>("robot_model", "CREATE_2");
   if (robot_model_name == "ROOMBA_400")
